@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+body {
+  @apply text-gray-900 tracking-wide overflow-x-hidden;
+}
+
+h2 span {
+  @apply text-2xl sm:text-4xl inline-block;
+}
+h2 span ~ p {
+  @apply sm:text-xl text-gray-600 pt-2 tracking-wide;
+}
