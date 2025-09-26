@@ -6,7 +6,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const AppleWatchModel = () => {
-  const { scene } = useGLTF("/apple-watch-model/scene.gltf");
+  const { scene } = useGLTF("/seiko-watch-model/scene.gltf");
   const group = useRef();
 
   useEffect(() => {
@@ -28,41 +28,58 @@ const AppleWatchModel = () => {
         );
       }
     });
+    // on mount animation
     tl.fromTo(
       group.current.position,
       { x: 50 },
-      { x: 2.5, duration: 1, opacity: 1 },
+      { x: 2, y: -0.2, duration: 1, opacity: 1 },
       0
     );
 
-    const scrollTween1 = gsap.fromTo(
-      group.current.position,
-      { x: 2.5 },
-      {
-        x: 6,
-        z: -1,
-        scrollTrigger: {
-          trigger: "#page2",
-          start: "top 80%",
-          end: "bottom 30%",
-          scrub: true,
-          markers: true,
-        },
-      }
-    );
+    const scrollTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#page2",
+        start: "top 85%",
+        end: "top 5%",
+        scrub: true,
+      },
+    });
 
-    return () => {
-      scrollTween1.scrollTrigger?.kill();
-    };
+    scrollTl.fromTo(
+      group.current.position,
+      { x: 2, opacity: 1 },
+      { x: 10, opacity: 0.5 }
+    );
+    scrollTl.fromTo(
+      group.current.position,
+      { x: 10, opacity: 0.5, y: -0.2 },
+      { x: 1.5, y: -0.6, opacity: 1 }
+    );
+    scrollTl.fromTo(group.current.rotation, { x: 0 }, { x: -0.2 });
+
+    const p3ScrollTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#page3",
+        start: "top 95%",
+        end: "top 40%",
+        scrub: true,
+      },
+    });
+
+    p3ScrollTl.fromTo(
+      group.current.position,
+      { x: 1.5, y: -0.6 },
+      { x: 0, y: -0.6 }
+    );
+    p3ScrollTl.fromTo(
+      group.current.position,
+      { x: 0, y: -0.6 },
+      { x: 0, y: 5 }
+    );
   });
 
   return (
-    <group
-      ref={group}
-      position={[2.5, 0.9, 0]}
-      scale={[0.45, 0.45, 0.45]}
-      rotation={[0.25, 0.5, 0]}
-    >
+    <group ref={group} scale={16} rotation={[0, 0, 0]}>
       <primitive object={scene}></primitive>
     </group>
   );

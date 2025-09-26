@@ -17,11 +17,49 @@ const LandingPage = () => {
       0
     );
     tl.fromTo(".discoverBtn", { y: 30, opacity: 0 }, { y: 0, opacity: 1 });
+
+    const scrollTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#page2",
+        start: "top 99%",
+        end: "top 95%",
+        scrub: true,
+      },
+    });
+
+    scrollTl.fromTo(
+      ".landing-heading",
+      { opacity: 1 },
+      { opacity: 0, stagger: 0.3 }
+    );
+    const subHeaderTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#page2",
+        start: "top 60%",
+        end: "top 40%",
+        scrub: true,
+      },
+    });
+    subHeaderTl.fromTo(
+      ".subHeader",
+      { y: 0, opacity: 1 },
+      {
+        y: -40,
+        opacity: 0,
+        stagger: 0.3,
+      }
+    );
+
+    return () => {
+      scrollTl?.kill();
+      tl?.kill();
+      subHeaderTl?.kill();
+    };
   }, []);
 
   return (
     <section className="h-[100vh] relative  ">
-      <h1 className="text-center  text-4xl sm:text-7xl tracking-wide top-25 absolute right-1 sm:right-5 lg:right-10">
+      <h1 className="text-center z-10  text-4xl sm:text-7xl tracking-wide top-25 absolute right-1 sm:right-5 lg:right-10">
         <span className="landing-heading block"> TIME</span>{" "}
         <span className="landing-heading block text-shadow-lg text-shadow-gray-100">
           REDEFINED{" "}

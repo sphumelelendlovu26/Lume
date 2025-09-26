@@ -125,6 +125,25 @@ const FeaturePage = () => {
       }
     );
 
+    const p2ScrollUpTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#page2",
+        start: "top 20%",
+        end: "top 5%",
+        scrub: true,
+      },
+    });
+
+    // p2ScrollUpTl.fromTo(
+    //   "subHeader1",
+    //   {
+    //     opacity: 1,
+    //   },
+    //   { opacity: 0, stagger: 0.3 }
+    // );
+
+    p2ScrollUpTl.fromTo(".subHeader", { opacity: 1 }, { opacity: 0 });
+
     return () => {
       tween1.scrollTrigger?.kill();
       subHeaderLeftTween.scrollTrigger?.kill();
