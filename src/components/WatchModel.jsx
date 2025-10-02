@@ -6,7 +6,7 @@ import { useThree } from "@react-three/fiber";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const WatchModel = () => {
+const WatchModel = ({ scalingFactor }) => {
   const { scene } = useGLTF("/watch-model/scene.gltf");
   const { camera } = useThree();
   const watchModelRef = useRef();
@@ -41,15 +41,24 @@ const WatchModel = () => {
 
       tl.fromTo(
         watchModelRef.current.scale,
-        { x: 0.39, y: 0.39, z: 0.39 },
-        { x: 0.16, y: 0.16, z: 0.16, duration: 1 },
+        {
+          x: 0.39 * scalingFactor,
+          y: 0.39 * scalingFactor,
+          z: 0.39 * scalingFactor,
+        },
+        {
+          x: 0.16 * scalingFactor,
+          y: 0.16 * scalingFactor,
+          z: 0.16 * scalingFactor,
+          duration: 1,
+        },
         0
       );
 
       tl.fromTo(
         watchModelRef.current.position,
         { y: -1, x: 0, z: 0 },
-        { x: 0.5, y: 0.5, z: 0 },
+        { x: 0, y: 0.5, z: 0 },
         0
       );
 
@@ -60,7 +69,7 @@ const WatchModel = () => {
           start: "top 85%",
           end: "top 10%",
           scrub: true,
-          // markers: true,
+          markers: true,
         },
       });
 
@@ -72,23 +81,22 @@ const WatchModel = () => {
       );
 
       // camera movement
-      scrollTl.fromTo(
-        camera.position,
-        { x: 2, y: 1, z: 5 },
-        {
-          x: 0,
-          y: 1.05,
-          z: 2.8,
-          onUpdate: () => camera.lookAt(0, 0, 0),
-        },
-        0 // sync with rotation
-      );
+      // scrollTl.fromTo(
+      //   camera.position,
+      //   {
+      //     x: 0,
+      //     y: 1.05,
+      //     z: 2.8,
+      //   },
+      //   { x: 2, y: 1, z: 5 },
+      //   0 // sync with rotation
+      // );
 
       // model position
       scrollTl.fromTo(
         watchModelRef.current.position,
-        { x: 0.5, y: 0.5, z: 0 },
-        { x: 0, y: 0, z: 0 }
+        { x: 0, y: 0.5, z: 0 },
+        { x: 0, y: 0, z: 2.5 }
       );
 
       // page 3 timeline
@@ -105,9 +113,9 @@ const WatchModel = () => {
         {
           x: 0,
           y: 0,
-          z: 0,
+          z: 2.5,
         },
-        { x: 0, y: 4, z: 0 }
+        { x: 0, y: 4, z: 2.5 }
       );
 
       return () => {
@@ -118,6 +126,20 @@ const WatchModel = () => {
       };
     }
   }, [camera]);
+
+  useEffect(() => {
+    console.log("📸 Camera Position:", camera.position);
+    console.log("📸 Camera Rotation:", camera.rotation);
+  }, []);
+  useEffect(() => {
+    if (watchModelRef.current) {
+      watchModelRef.current.scale.set(
+        0.16 * scalingFactor,
+        0.16 * scalingFactor,
+        0.16 * scalingFactor
+      );
+    }
+  }, [scalingFactor]);
 
   return (
     <group ref={watchModelRef}>

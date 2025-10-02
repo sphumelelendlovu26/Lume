@@ -6,7 +6,7 @@ import { useThree } from "@react-three/fiber";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ChronographModel = () => {
+const ChronographModel = ({ scalingFactor }) => {
   const { scene } = useGLTF("/chronograph-model/scene.gltf");
   const group = useRef();
   const { camera } = useThree();
@@ -15,27 +15,11 @@ const ChronographModel = () => {
     if (!group.current) return;
     const tl = gsap.timeline();
 
-    // group.current.traverse((child) => {
-    //   if (child.isMesh && child.material) {
-    //     child.material.transparent = true;
-    //     child.material.opacity = 0.5;
-
-    //     tl.to(
-    //       child.material,
-    //       {
-    //         opacity: 1,
-    //         delay: 1,
-    //         ease: "power2.out",
-    //       },
-    //       0
-    //     );
-    //   }
-    // });
     // on mount animation
     tl.fromTo(
       group.current.position,
       { x: -50 },
-      { x: -3, y: 0.3, duration: 1.5, opacity: 1 },
+      { x: -3, duration: 1.5, opacity: 1 },
       0
     );
     const scrollTl = gsap.timeline({
@@ -47,11 +31,7 @@ const ChronographModel = () => {
       },
     });
     //moves yellow watch left on scroll in the landing page
-    scrollTl.fromTo(
-      group.current.position,
-      { x: -3, y: 0.3 },
-      { x: -10, y: 0.3 }
-    );
+    scrollTl.fromTo(group.current.position, { x: -3, y: 0 }, { x: -10, y: 0 });
 
     const p3ScrollTl = gsap.timeline({
       scrollTrigger: {
@@ -65,7 +45,7 @@ const ChronographModel = () => {
       group.current.position,
       {
         x: -10,
-        y: -0.3,
+        y: 0,
       },
       { x: 0, y: -10 }
     );
@@ -82,18 +62,18 @@ const ChronographModel = () => {
     });
 
     p3ScrollTl2.fromTo(group.current.rotation, { x: 0 }, { x: -1.5 }, 0);
-    p3ScrollTl2.fromTo(
-      camera.position,
-      { x: 0, y: 1.05, z: 2.8 },
-      { x: 0, y: 0.8, z: 0.7 },
-      0
-    );
+    // p3ScrollTl2.fromTo(
+    //   camera.position,
+    //   { x: 0, y: 1.05, z: 2.8 },
+    //   { x: 0, y: 0.8, z: 0.7 },
+    //   0
+    // );
     p3ScrollTl2.fromTo(
       camera.rotation,
       {
         y: 0,
       },
-      { y: 2,  onUpdate:{0}}
+      { y: 2 }
     );
 
     //resets animations on unmount
@@ -105,7 +85,7 @@ const ChronographModel = () => {
   }, []);
 
   return (
-    <group ref={group} scale={0.45}>
+    <group ref={group} scale={0.45 * scalingFactor}>
       <primitive object={scene} />
     </group>
   );

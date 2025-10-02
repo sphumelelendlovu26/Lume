@@ -21,7 +21,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 w-full shadow z-50">
+    <nav className="fixed top-0 left-0 w-screen shadow z-50">
       <div className="flex justify-between sm p-2">
         <span>Icon</span>
         <ul className="flex gap-5 sm:gap-15">

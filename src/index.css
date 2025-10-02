@@ -10,3 +10,7 @@ h2 span {
 h2 span ~ p {
   @apply sm:text-xl text-gray-600 pt-2 tracking-wide;
 }
+
+section {
+  @apply pt-10  overflow-hidden z-40;
+}
