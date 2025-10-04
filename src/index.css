@@ -24,8 +24,14 @@ section {
   @apply bg-gray-900 text-gray-100;
 }
 .link {
-  @apply p-1 my-1 rounded transition-all;
+  @apply p-1 my-1 rounded transition-all hover:cursor-pointer;
 }
 .container {
   @apply mt-10 mx-auto;
+}
+nav {
+  @apply px-10;
+}
+.watchCard {
+  @apply p-5;
 }

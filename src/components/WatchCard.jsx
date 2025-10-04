@@ -1,10 +1,10 @@
-const WatchCard = ({ watch, setModalIsOpen, setSelectedModelSrc }) => {
+const WatchCard = ({ watch, setModalIsOpen, setSelectedModelId }) => {
   return (
     <main
-      className="shadow-lg border flex flex-col items-center m-4 size-1/2 rounded  hover:cursor-pointer"
+      className="shadow-lg watchCard flex flex-col items-center gap-5   rounded  hover:cursor-pointer "
       onClick={() => {
         setModalIsOpen(true);
-        setSelectedModelSrc(watch.src);
+        setSelectedModelId(watch.id);
       }}
     >
       <div className="">

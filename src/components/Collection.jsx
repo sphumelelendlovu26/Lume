@@ -1,5 +1,11 @@
 import WatchCard from "./WatchCard";
-const Collection = ({ setModalIsOpen, setSelectedModelSrc }) => {
+import { useEffect } from "react";
+const Collection = ({
+  setModalIsOpen,
+  setSelectedModelId,
+  setSelectedModel,
+  selectedModelId,
+}) => {
   const watches = [
     {
       id: 1,
@@ -7,7 +13,7 @@ const Collection = ({ setModalIsOpen, setSelectedModelSrc }) => {
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel commodi aperiam unde laborum minus, pariatur fuga ipsa quaerat incidunt dolores, facere veritatis rerum laboriosam tenetur autem corrupti, reiciendis consectetur repudiandae",
       price: 4999,
-      image: "",
+      image: "/casio_watch/casio_watch.JPG",
       src: "/chronograph_watch/scene.gltf",
     },
     {
@@ -21,15 +27,22 @@ const Collection = ({ setModalIsOpen, setSelectedModelSrc }) => {
     },
   ];
 
+  useEffect(() => {
+    const selected = watches.find((watch) => watch.id === selectedModelId);
+    if (selected) {
+      setSelectedModel(selected);
+    }
+  }, [selectedModelId]);
+
   return (
-    <main className="w-[95vw] h-[95vh] container ">
-      <div className=" gap-3">
+    <main className="w-[95vw] h-[95vh] container  ">
+      <div className="flex gap-2">
         {watches.map((watch) => (
           <WatchCard
             key={watch.id}
             watch={watch}
             setModalIsOpen={setModalIsOpen}
-            setSelectedModelSrc={setSelectedModelSrc}
+            setSelectedModelId={setSelectedModelId}
           />
         ))}
       </div>

@@ -6,8 +6,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import About from "./components/About";
 import Collection from "./components/Collection";
 import Modal from "./components/Modal";
-import { useLocation } from "react-router-dom";
+
 import Layout from "./components/Layout";
+import Cart from "./components/Cart";
 const App = () => {
   //lenis scroll configuration
   useEffect(() => {
@@ -30,7 +31,8 @@ const App = () => {
   }, []);
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [selectedModelSrc, setSelectedModelSrc] = useState(null);
+  const [selectedModelId, setSelectedModelId] = useState(null);
+  const [selectedModel, setSelectedModel] = useState(null);
 
   return (
     <BrowserRouter>
@@ -43,16 +45,19 @@ const App = () => {
             element={
               <Collection
                 setModalIsOpen={setModalIsOpen}
-                setSelectedModelSrc={setSelectedModelSrc}
+                setSelectedModelId={setSelectedModelId}
+                setSelectedModel={setSelectedModel}
+                selectedModelId={selectedModelId}
               />
             }
           />
           <Route path="/about" element={<About />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
         {modalIsOpen && (
           <Modal
             setModalIsOpen={setModalIsOpen}
-            selectedModelSrc={selectedModelSrc}
+            selectedModel={selectedModel}
           />
         )}
       </Layout>

@@ -23,7 +23,7 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 w-screen shadow z-50 ">
-      <div className="flex justify-between p-5">
+      <div className="flex items-center justify-between p-5">
         <span>Icon</span>
         <ul className="flex gap-3 sm:gap-12 items-center  px-4">
           <li className="link">
@@ -35,9 +35,12 @@ const Navbar = () => {
           <li className="link">
             <Link to="/about">About</Link>
           </li>
-          <li className="link">Contact</li>
           <li className="link">
-            🛒 {/* later you can swap with a cart icon */}
+            <Link>Contact</Link>
+          </li>
+          <li className="link">
+            <Link to="/cart">🛒</Link>
+            {/* swap with a cart icon */}
           </li>
         </ul>
       </div>
