@@ -9,12 +9,12 @@ import ChronographModel from "./components/chronographModel";
 const Scene = () => {
   const axesRef = useRef();
   const [scalingFactor, setScalingFactor] = useState(
-    Math.min(Math.max(window.innerWidth / 960, 0.8), 1.5)
+    Math.min(Math.max(window.innerWidth / 960, 0.8), 1.15)
   );
 
   useEffect(() => {
     const handleResize = () => {
-      setScalingFactor(Math.min(Math.max(window.innerWidth / 960, 0.9), 1.5));
+      setScalingFactor(Math.min(Math.max(window.innerWidth / 960, 0.9), 1.15));
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -22,7 +22,7 @@ const Scene = () => {
   console.log(scalingFactor);
 
   return (
-    <div className="fixed scrollbar-hide top-0 border-2  left-0 w-screen -z-50 h-full pt-10  overflow-clip ">
+    <div className="fixed  top-0 left-0 w-screen  h-full pt-10  overflow-clip ">
       <Canvas camera={[0, 0, 6]} fov={30}>
         <directionalLight
           intensity={20}
@@ -30,7 +30,7 @@ const Scene = () => {
           shadow-mapSize-width={1024}
           shadow-mapSize-height={1024}
         />
-        <primitive object={new AxesHelper(10)} ref={axesRef} />
+        {/* <primitive object={new AxesHelper(10)} ref={axesRef} /> */}
         <ambientLight intensity={10} />
         <WatchModel scalingFactor={scalingFactor} />
         <AppleWatchModel scalingFactor={scalingFactor} />

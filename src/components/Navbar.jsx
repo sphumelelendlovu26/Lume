@@ -1,5 +1,6 @@
 import gsap from "gsap";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const tl = gsap.timeline();
@@ -21,13 +22,23 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 w-screen shadow z-50">
-      <div className="flex justify-between sm p-2">
+    <nav className="fixed top-0 left-0 w-screen shadow z-50 ">
+      <div className="flex justify-between p-5">
         <span>Icon</span>
-        <ul className="flex gap-5 sm:gap-15">
-          <li className="link">Home</li>
-          <li className="link">Jewellery</li>
-          <li className="link">Watches</li>
+        <ul className="flex gap-3 sm:gap-12 items-center  px-4">
+          <li className="link">
+            <Link to="/">Home</Link>
+          </li>
+          <li className="link">
+            <Link to="/collection">Collection</Link>
+          </li>
+          <li className="link">
+            <Link to="/about">About</Link>
+          </li>
+          <li className="link">Contact</li>
+          <li className="link">
+            🛒 {/* later you can swap with a cart icon */}
+          </li>
         </ul>
       </div>
     </nav>

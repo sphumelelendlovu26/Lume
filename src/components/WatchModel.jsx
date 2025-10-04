@@ -69,7 +69,7 @@ const WatchModel = ({ scalingFactor }) => {
           start: "top 85%",
           end: "top 10%",
           scrub: true,
-          markers: true,
+          // markers: true,
         },
       });
 
@@ -92,11 +92,11 @@ const WatchModel = ({ scalingFactor }) => {
       //   0 // sync with rotation
       // );
 
-      // model position
+      // page 2 scroll animation
       scrollTl.fromTo(
         watchModelRef.current.position,
         { x: 0, y: 0.5, z: 0 },
-        { x: 0, y: 0, z: 2.5 }
+        { x: 0, y: -0.1, z: 2.5 }
       );
 
       // page 3 timeline
@@ -112,7 +112,7 @@ const WatchModel = ({ scalingFactor }) => {
         watchModelRef.current.position,
         {
           x: 0,
-          y: 0,
+          y: -0.1,
           z: 2.5,
         },
         { x: 0, y: 4, z: 2.5 }

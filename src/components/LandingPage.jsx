@@ -75,13 +75,6 @@ const LandingPage = () => {
           <span className="block subHeader tracking-wide">and precision.</span>
         </p>
       </div>
-
-      <a
-        href="#"
-        className="discoverBtn shadow px-3 rounded sm:text-2xl sm:bottom:25 bottom-20 absolute left-1/2 translate-x-[-50%]"
-      >
-        Discover More
-      </a>
     </section>
   );
 };

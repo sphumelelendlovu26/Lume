@@ -1,0 +1,11 @@
+Model Information:
+* title:	Casio Watch
+* source:	https://sketchfab.com/3d-models/casio-watch-0416420c76704cbaafc472d9211c45af
+* author:	DaTsan (https://sketchfab.com/DaTsan)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Casio Watch" (https://sketchfab.com/3d-models/casio-watch-0416420c76704cbaafc472d9211c45af) by DaTsan (https://sketchfab.com/DaTsan) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

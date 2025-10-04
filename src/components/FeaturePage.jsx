@@ -59,8 +59,6 @@ const FeaturePage = () => {
           trigger: "#page2",
           start: "top 30%",
           end: "top 10%",
-
-          scrub: true,
         },
       }
     );
@@ -121,6 +119,7 @@ const FeaturePage = () => {
           start: "top 30%",
           end: "top 10%",
           scrub: true,
+          onLeave: () => {},
         },
       }
     );
@@ -131,6 +130,7 @@ const FeaturePage = () => {
         start: "top 20%",
         end: "top 5%",
         scrub: true,
+        // markers: true,
       },
     });
 
@@ -141,8 +141,6 @@ const FeaturePage = () => {
     //   },
     //   { opacity: 0, stagger: 0.3 }
     // );
-
-    p2ScrollUpTl.fromTo(".subHeader", { opacity: 1 }, { opacity: 0 });
 
     return () => {
       tween1.scrollTrigger?.kill();

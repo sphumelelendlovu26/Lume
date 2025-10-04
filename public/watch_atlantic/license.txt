@@ -1,0 +1,11 @@
+Model Information:
+* title:	Watch Atlantic
+* source:	https://sketchfab.com/3d-models/watch-atlantic-cae4c557c949470697a86975ef9fdbc6
+* author:	Siouxie (https://sketchfab.com/Siouxie)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Watch Atlantic" (https://sketchfab.com/3d-models/watch-atlantic-cae4c557c949470697a86975ef9fdbc6) by Siouxie (https://sketchfab.com/Siouxie) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
