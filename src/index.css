@@ -27,11 +27,65 @@ section {
   @apply p-1 my-1 rounded transition-all hover:cursor-pointer;
 }
 .container {
-  @apply mt-10 mx-auto;
+  @apply mt-11 mx-auto p-2;
 }
 nav {
-  @apply px-10;
+  @apply px-2 md:px-10 z-[50];
 }
+
 .watchCard {
-  @apply p-5;
+  @apply p-5 w-full sm:w-auto;
+}
+
+li {
+  @apply tracking-wide pointer-events-auto;
+}
+p {
+  @apply px-5;
+}
+.mobileNav {
+  @apply mx-auto z-50;
+}
+.scene {
+  @apply -z-50 w-full;
+}
+span {
+  @apply mask-b-from-70%;
+}
+.navigationBtn {
+  @apply bg-gray-300 text-gray-400 border flex items-center text-sm sm:text-lg opacity-20 hover:opacity-80 justify-center rounded-full size-7 sm:size-15 hover:cursor-pointer hover:bg-transparent transition-all;
+}
+.addTocartBtn {
+  @apply p-1 transition rounded;
+}
+.formInputs {
+  @apply my-4 flex  items-center p-2 border border-gray-300 rounded;
+}
+.formInputs > label {
+  @apply absolute pl-7 text-gray-500 pointer-events-none;
+}
+form {
+  @apply px-7;
+}
+fieldset > legend {
+  @apply text-gray-900 mb-5 mask-b-from-55%;
+}
+fieldset {
+  @apply flex flex-col gap-5;
+}
+.formInputs > input {
+  @apply pl-1 text-gray-500 bg-none outline-0;
+}
+
+.formInputs > input:valid {
+  @apply bg-transparent;
+}
+
+.formInputs > input:focus ~ label,
+.formInputs > input:valid ~ label {
+  transform: translateY(-30px);
+  transition: 0.3s ease;
+}
+.discoverBtn {
+  @apply sm:px-4 sm:py-2 px-2 py-1;
 }

@@ -6,7 +6,7 @@ import { AxesHelper } from "three";
 import { useEffect, useRef, useState } from "react";
 import ChronographModel from "./components/chronographModel";
 
-const Scene = () => {
+const Scene = ({ isMobile }) => {
   const axesRef = useRef();
   const [scalingFactor, setScalingFactor] = useState(
     Math.min(Math.max(window.innerWidth / 960, 0.8), 1.15)
@@ -19,10 +19,9 @@ const Scene = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-  console.log(scalingFactor);
 
   return (
-    <div className="fixed  top-0 left-0 w-screen  h-full pt-10  overflow-clip ">
+    <div className="fixed inset-0 flex items-center justify-center overflow-hidden -z-50">
       <Canvas camera={[0, 0, 6]} fov={30}>
         <directionalLight
           intensity={20}
@@ -33,12 +32,12 @@ const Scene = () => {
         {/* <primitive object={new AxesHelper(10)} ref={axesRef} /> */}
         <ambientLight intensity={10} />
         <WatchModel scalingFactor={scalingFactor} />
-        <AppleWatchModel scalingFactor={scalingFactor} />
+        <AppleWatchModel scalingFactor={scalingFactor} isMobile={isMobile} />
         {/* <ChronographModel scalingFactor={scalingFactor} /> */}
         <OrbitControls
-        // enableZoom={false}
-        // enablePan={false}
-        // enableRotate={false}
+          enableZoom={false}
+          // enablePan={false}
+          // enableRotate={false}
         />
       </Canvas>
     </div>

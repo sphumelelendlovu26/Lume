@@ -1,6 +1,7 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect } from "react";
+import React from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -177,7 +178,7 @@ const FeaturePage = () => {
           </p>
         </h2>
       </div>
-      <div className=" absolute bottom-50  w-full">
+      <div className=" absolute bottom-50 left-10 w-full">
         <h2 className="text-start  inline">
           <span className="subHeader3 mr-2 ">Innovative </span>
           <span className="subHeader3">Materials</span>
@@ -191,4 +192,4 @@ const FeaturePage = () => {
   );
 };
 
-export default FeaturePage;
+export default React.memo(FeaturePage);

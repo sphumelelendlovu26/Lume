@@ -1,14 +1,18 @@
 import Navbar from "./components/Navbar";
 import Lenis from "lenis";
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import Home from "./components/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import About from "./components/About";
-import Collection from "./components/Collection";
-import Modal from "./components/Modal";
-
 import Layout from "./components/Layout";
-import Cart from "./components/Cart";
+import MobileNav from "./components/MobileNav";
+
+//lazy-loaded components
+const About = lazy(() => import("./components/About"));
+const Collection = lazy(() => import("./components/Collection"));
+import Modal from "./components/Modal";
+const Login = lazy(() => import("./components/Login"));
+const Cart = lazy(() => import("./components/Cart"));
+
 const App = () => {
   //lenis scroll configuration
   useEffect(() => {
@@ -33,26 +37,66 @@ const App = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedModelId, setSelectedModelId] = useState(null);
   const [selectedModel, setSelectedModel] = useState(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [navIsOpen, setNavIsOpen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <BrowserRouter>
       <Layout>
-        <Navbar />
+        <Navbar
+          isMobile={isMobile}
+          setNavIsOpen={setNavIsOpen}
+          navIsOpen={navIsOpen}
+        />
+
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home isMobile={isMobile} />} />
           <Route
             path="/collection"
             element={
-              <Collection
-                setModalIsOpen={setModalIsOpen}
-                setSelectedModelId={setSelectedModelId}
-                setSelectedModel={setSelectedModel}
-                selectedModelId={selectedModelId}
-              />
+              <Suspense>
+                <Collection
+                  setModalIsOpen={setModalIsOpen}
+                  setSelectedModelId={setSelectedModelId}
+                  setSelectedModel={setSelectedModel}
+                  selectedModelId={selectedModelId}
+                />
+              </Suspense>
             }
           />
-          <Route path="/about" element={<About />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route
+            path="/about"
+            element={
+              <Suspense>
+                <About />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <Suspense>
+                <Login />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/cart"
+            element={
+              <Suspense>
+                <Cart />
+              </Suspense>
+            }
+          />
         </Routes>
         {modalIsOpen && (
           <Modal
@@ -60,6 +104,7 @@ const App = () => {
             selectedModel={selectedModel}
           />
         )}
+        {navIsOpen && <MobileNav />}
       </Layout>
     </BrowserRouter>
   );

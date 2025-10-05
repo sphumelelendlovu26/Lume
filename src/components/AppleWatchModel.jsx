@@ -6,7 +6,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 // model foer the right watch
-const AppleWatchModel = ({ scalingFactor }) => {
+const AppleWatchModel = ({ scalingFactor, isMobile }) => {
   const { scene } = useGLTF("/seiko-watch-model/scene.gltf");
   const group = useRef();
 
@@ -32,8 +32,8 @@ const AppleWatchModel = ({ scalingFactor }) => {
     // on mount animation
     tl.fromTo(
       group.current.position,
-      { x: 50 },
-      { x: 2, y: -0.2, duration: 1.5 },
+      { x: 30 },
+      { x: isMobile ? 1.5 : 2, y: -0.2, duration: 1.5 },
       0
     );
 
@@ -48,7 +48,7 @@ const AppleWatchModel = ({ scalingFactor }) => {
 
     scrollTl.fromTo(
       group.current.position,
-      { x: 2, opacity: 1 },
+      { x: isMobile ? 1.5 : 2, opacity: 1 },
       { x: 10, opacity: 0.5 }
     );
     scrollTl.fromTo(

@@ -58,8 +58,8 @@ const LandingPage = () => {
   }, []);
 
   return (
-    <section className="h-[100vh] relative  ">
-      <h1 className="text-center -z-10  text-4xl sm:text-6xl tracking-wide top-25 absolute right-1 sm:right-5 lg:right-10">
+    <section className="h-[100vh] relative   ">
+      <h1 className="text-center -z-10  text-4xl sm:text-6xl tracking-wide sm:top-25 top-12 absolute right-1 sm:right-5 lg:right-10">
         <span className="landing-heading block"> TIME</span>{" "}
         <span className="landing-heading block text-shadow-lg text-shadow-gray-100">
           REDEFINED{" "}

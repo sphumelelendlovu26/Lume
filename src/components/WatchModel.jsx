@@ -128,10 +128,6 @@ const WatchModel = ({ scalingFactor }) => {
   }, [camera]);
 
   useEffect(() => {
-    console.log("📸 Camera Position:", camera.position);
-    console.log("📸 Camera Rotation:", camera.rotation);
-  }, []);
-  useEffect(() => {
     if (watchModelRef.current) {
       watchModelRef.current.scale.set(
         0.16 * scalingFactor,
