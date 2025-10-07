@@ -4,14 +4,14 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import Home from "./components/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
-import MobileNav from "./components/MobileNav";
 
 //lazy-loaded components
 const About = lazy(() => import("./components/About"));
 const Collection = lazy(() => import("./components/Collection"));
-import Modal from "./components/Modal";
 const Login = lazy(() => import("./components/Login"));
 const Cart = lazy(() => import("./components/Cart"));
+const Modal = lazy(() => import("./components/Modal"));
+const MobileNav = lazy(() => import("./components/MobileNav"));
 
 const App = () => {
   //lenis scroll configuration
@@ -63,7 +63,7 @@ const App = () => {
           <Route
             path="/collection"
             element={
-              <Suspense>
+              <Suspense fallback={<div className="loader">Loading...</div>}>
                 <Collection
                   setModalIsOpen={setModalIsOpen}
                   setSelectedModelId={setSelectedModelId}

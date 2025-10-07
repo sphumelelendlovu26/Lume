@@ -1,131 +1,135 @@
 import { useGLTF } from "@react-three/drei";
-import gsap from "gsap";
-import { useEffect, useRef } from "react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useThree } from "@react-three/fiber";
+import { useLayoutEffect, useEffect, useRef, useMemo } from "react";
+import "../setupKTX2Loader";
 
-gsap.registerPlugin(ScrollTrigger);
-
+useGLTF.preload("/watch-model/scene-draco.glb");
 const WatchModel = ({ scalingFactor }) => {
-  const { scene } = useGLTF("/watch-model/scene.gltf");
-  const { camera } = useThree();
+  const { scene } = useGLTF("/watch-model/scene-draco.glb", true);
+  const clonedScene = useMemo(() => scene.clone(), [scene]);
   const watchModelRef = useRef();
 
   useEffect(() => {
-    if (watchModelRef.current) {
-      // Intro animation
-      const tl = gsap.timeline();
-      // watchModelRef.current.traverse((child) => {
-      //   if (child.isMesh && child.material) {
-      //     child.material.transparent = true;
-      //     child.material.opacity = 0.5;
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        observer.disconnect();
+      }
+    });
+    const el = document.querySelector("#page2");
+    if (el) observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
-      //     tl.to(
-      //       child.material,
-      //       {
-      //         opacity: 1,
-      //         delay: 2,
-      //         ease: "power2.out",
-      //       },
-      //       0
-      //     );
-      //   }
-      // });
+  useLayoutEffect(() => {
+    let tl, scrollTl, p3ScrollTl;
 
-      tl.fromTo(
-        watchModelRef.current.rotation,
-        { y: 0 },
-        { y: Math.PI * 2, duration: 1, ease: "sine.inOut" },
-        0
-      );
+    const loadGSAP = async () => {
+      const gsap = (await import("gsap")).default;
+      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+      gsap.registerPlugin(ScrollTrigger);
+      if (!scene) return null;
+      if (watchModelRef.current) {
+        // Intro animation
+        tl = gsap.timeline();
 
-      tl.fromTo(
-        watchModelRef.current.scale,
-        {
-          x: 0.39 * scalingFactor,
-          y: 0.39 * scalingFactor,
-          z: 0.39 * scalingFactor,
-        },
-        {
-          x: 0.16 * scalingFactor,
-          y: 0.16 * scalingFactor,
-          z: 0.16 * scalingFactor,
-          duration: 1,
-        },
-        0
-      );
+        tl.fromTo(
+          watchModelRef.current.rotation,
+          { y: 0 },
+          { y: Math.PI * 2, duration: 1, ease: "sine.inOut" },
+          0
+        );
 
-      tl.fromTo(
-        watchModelRef.current.position,
-        { y: -1, x: 0, z: 0 },
-        { x: 0, y: 0.5, z: 0 },
-        0
-      );
+        tl.fromTo(
+          watchModelRef.current.scale,
+          {
+            x: 0.39 * scalingFactor,
+            y: 0.39 * scalingFactor,
+            z: 0.39 * scalingFactor,
+          },
+          {
+            x: 0.16 * scalingFactor,
+            y: 0.16 * scalingFactor,
+            z: 0.16 * scalingFactor,
+            duration: 1,
+          },
+          0
+        );
 
-      // Scroll-driven timeline
-      const scrollTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: "#page2",
-          start: "top 85%",
-          end: "top 10%",
-          scrub: true,
-          // markers: true,
-        },
-      });
+        tl.fromTo(
+          watchModelRef.current.position,
+          { y: -1, x: 0, z: 0 },
+          { x: 0, y: 0.5, z: 0 },
+          0
+        );
 
-      // watch rotation
-      scrollTl.fromTo(
-        watchModelRef.current.rotation,
-        { y: Math.PI * 2, z: 0 },
-        { y: 0, ease: "none" }
-      );
+        // Scroll-driven timeline
+        scrollTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#page2",
+            start: "top 85%",
+            end: "top 10%",
+            scrub: true,
+            // markers: true,
+          },
+        });
 
-      // camera movement
-      // scrollTl.fromTo(
-      //   camera.position,
-      //   {
-      //     x: 0,
-      //     y: 1.05,
-      //     z: 2.8,
-      //   },
-      //   { x: 2, y: 1, z: 5 },
-      //   0 // sync with rotation
-      // );
+        // watch rotation
+        scrollTl.fromTo(
+          watchModelRef.current.rotation,
+          { y: Math.PI * 2, z: 0 },
+          { y: 0, ease: "none" }
+        );
 
-      // page 2 scroll animation
-      scrollTl.fromTo(
-        watchModelRef.current.position,
-        { x: 0, y: 0.5, z: 0 },
-        { x: 0, y: -0.1, z: 2.5 }
-      );
+        // camera movement
+        // scrollTl.fromTo(
+        //   camera.position,
+        //   {
+        //     x: 0,
+        //     y: 1.05,
+        //     z: 2.8,
+        //   },
+        //   { x: 2, y: 1, z: 5 },
+        //   0 // sync with rotation
+        // );
 
-      // page 3 timeline
-      const p3ScrollTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: "#page3",
-          start: "top 95%",
-          end: "top 40%",
-          scrub: true,
-        },
-      });
-      p3ScrollTl.fromTo(
-        watchModelRef.current.position,
-        {
-          x: 0,
-          y: -0.1,
-          z: 2.5,
-        },
-        { x: 0, y: 4, z: 2.5 }
-      );
+        // page 2 scroll animation
+        scrollTl.fromTo(
+          watchModelRef.current.position,
+          { x: 0, y: 0.5, z: 0 },
+          { x: 0, y: -0.1, z: 2.5 }
+        );
 
-      return () => {
-        tl.kill();
-        scrollTl.scrollTrigger?.kill();
-        scrollTl.kill();
-        p3ScrollTl.scrollTrigger?.kill();
-      };
-    }
-  }, [camera]);
+        // page 3 timeline
+        p3ScrollTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#page3",
+            start: "top 95%",
+            end: "top 40%",
+            scrub: true,
+          },
+        });
+        p3ScrollTl.fromTo(
+          watchModelRef.current.position,
+          {
+            x: 0,
+            y: -0.1,
+            z: 2.5,
+          },
+          { x: 0, y: 4, z: 2.5 }
+        );
+      }
+    };
+
+    const idleCallbackId = requestIdleCallback(() => {
+      loadGSAP();
+    });
+    return () => {
+      tl?.kill();
+      scrollTl?.scrollTrigger?.kill();
+      scrollTl?.kill();
+      p3ScrollTl?.scrollTrigger?.kill();
+      cancelIdleCallback(idleCallbackId);
+    };
+  }, []);
 
   useEffect(() => {
     if (watchModelRef.current) {
@@ -139,7 +143,7 @@ const WatchModel = ({ scalingFactor }) => {
 
   return (
     <group ref={watchModelRef}>
-      <primitive object={scene} />
+      <primitive object={clonedScene} />
     </group>
   );
 };

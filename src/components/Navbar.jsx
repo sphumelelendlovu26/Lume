@@ -1,26 +1,35 @@
-import gsap from "gsap";
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import { Link } from "react-router-dom";
 import "boxicons";
 import React from "react";
 
 const Navbar = ({ isMobile, setNavIsOpen, navIsOpen }) => {
-  const tl = gsap.timeline();
-  useEffect(() => {
-    tl.fromTo(
-      ".link",
-      {
-        opacity: 0,
-        y: -20,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.3,
-        duration: 1,
-        ease: "none",
+  useLayoutEffect(() => {
+    let tl;
+    const loadGSAP = async () => {
+      const gsap = (await import("gsap")).default;
+      tl = gsap.timeline();
+      if (!isMobile) {
+        tl.fromTo(
+          ".link",
+          {
+            opacity: 0,
+            y: -20,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            stagger: 0.3,
+            duration: 1,
+            ease: "none",
+          }
+        );
       }
-    );
+    };
+    loadGSAP();
+    return () => {
+      tl.kill?.();
+    };
   }, []);
 
   return (

@@ -24,13 +24,7 @@ const Scene = ({ isMobile }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center overflow-hidden -z-50">
       <Canvas camera={[0, 0, 6]} fov={30}>
-        <directionalLight
-          intensity={15}
-          castShadow
-          shadow-mapSize-width={1024}
-          shadow-mapSize-height={1024}
-          position={[0, 1, 0.5]}
-        />
+        <directionalLight intensity={15} position={[0, 1, 0.5]} />
         <primitive object={new AxesHelper(10)} ref={axesRef} />
         <ambientLight intensity={14} />
         <WatchModel scalingFactor={scalingFactor} />

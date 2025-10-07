@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import React from "react";
 
 const MobileNav = ({ setNavIsOpen }) => {
   const closeNav = () => {
@@ -39,4 +40,4 @@ const MobileNav = ({ setNavIsOpen }) => {
   );
 };
 
-export default MobileNav;
+export default React.memo(MobileNav);

@@ -1,10 +1,20 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const CraftedPage = () => {
+  useEffect(() => {
+    const loadGSAP = async () => {
+      const gsap = (await import("gsap")).default;
+      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+      gsap.registerPlugin(ScrollTrigger);
+    };
+    loadGSAP();
+  });
+
   return (
     <section
       id="page3"
-      className="border h-[100vh] p-5  relative flex flex-col justify-center items-center text-shadow-md text-shadow-white  "
+      className=" h-[100vh] p-5  relative flex flex-col justify-center items-center text-shadow-md text-shadow-white  "
     >
       <h2 className="text-3xl absolute  top-[8%] sm:text-5xl font-semibold text-center mb-5 subHeader4">
         Crafted for Every Moment

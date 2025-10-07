@@ -1,54 +1,62 @@
-import gsap from "gsap";
 import { useEffect } from "react";
 
 const LandingPage = () => {
-  const tl = gsap.timeline();
   useEffect(() => {
-    tl.fromTo(
-      ".landing-heading",
-      { opacity: 0, y: -50 },
-      { opacity: 1, y: 0, delay: 1.5, stagger: 0.5, ease: "sine.inOut" },
-      0
-    );
-    tl.fromTo(
-      ".subHeader",
-      { opacity: 0, y: 40 },
-      { opacity: 1, y: 0, delay: 2.5, stagger: 0.3 },
-      0
-    );
-    tl.fromTo(".discoverBtn", { y: 30, opacity: 0 }, { y: 0, opacity: 1 });
+    let scrollTl, subHeaderTl, tl;
 
-    const scrollTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#page2",
-        start: "top 99%",
-        end: "top 95%",
-        scrub: true,
-      },
-    });
+    const loadGSAP = async () => {
+      const gsap = (await import("gsap")).default;
 
-    scrollTl.fromTo(
-      ".landing-heading",
-      { opacity: 1 },
-      { opacity: 0, stagger: 0.3 }
-    );
-    const subHeaderTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#page2",
-        start: "top 60%",
-        end: "top 40%",
-        scrub: true,
-      },
-    });
-    subHeaderTl.fromTo(
-      ".subHeader",
-      { y: 0, opacity: 1 },
-      {
-        y: -40,
-        opacity: 0,
-        stagger: 0.3,
-      }
-    );
+      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+
+      gsap.registerPlugin(ScrollTrigger);
+      tl = gsap.timeline();
+      tl.fromTo(
+        ".landing-heading",
+        { opacity: 0, y: -50 },
+        { opacity: 1, y: 0, delay: 1.5, stagger: 0.5, ease: "sine.inOut" },
+        0
+      );
+      tl.fromTo(
+        ".subHeader",
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, delay: 2.5, stagger: 0.3 },
+        0
+      );
+
+      scrollTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: "#page2",
+          start: "top 99%",
+          end: "top 95%",
+          scrub: true,
+        },
+      });
+
+      scrollTl.fromTo(
+        ".landing-heading",
+        { opacity: 1 },
+        { opacity: 0, stagger: 0.3 }
+      );
+      subHeaderTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: "#page2",
+          start: "top 60%",
+          end: "top 40%",
+          scrub: true,
+        },
+      });
+      subHeaderTl.fromTo(
+        ".subHeader",
+        { y: 0, opacity: 1 },
+        {
+          y: -40,
+          opacity: 0,
+          stagger: 0.3,
+        }
+      );
+    };
+    loadGSAP();
 
     return () => {
       scrollTl?.kill();

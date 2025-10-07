@@ -1,0 +1,8 @@
+{
+  "Glass_baseColor": "Glass_baseColor.png",
+  "Glass_metallicRoughness": "Glass_metallicRoughness.png",
+  "Glass_normal": "Glass_normal.png",
+  "metal_baseColor": "metal_baseColor.jpeg",
+  "metal_metallicRoughness": "metal_metallicRoughness.png",
+  "metal_normal": "metal_normal.png"
+}

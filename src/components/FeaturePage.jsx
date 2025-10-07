@@ -1,148 +1,156 @@
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect } from "react";
 import React from "react";
 
-gsap.registerPlugin(ScrollTrigger);
-
 const FeaturePage = () => {
   useEffect(() => {
-    // PrecisionEngineering animation
-    const tween1 = gsap.fromTo(
-      ".subHeader1",
-      { opacity: 0, y: -60 },
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.2,
-        scrollTrigger: {
-          trigger: ".feature-page",
-          start: "top 80%",
-          end: "top 20%",
-          scrub: true,
-        },
-      }
-    );
+    let tween1,
+      subHeaderLeftTween,
+      subHeaderRightTween,
+      tween3,
+      paragraphTween,
+      paragraph2Tween,
+      paragraph3Tween,
+      p2ScrollUpTl;
+    const loadGSAP = async () => {
+      const gsap = (await import("gsap")).default;
+      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+      gsap.registerPlugin(ScrollTrigger);
+      tween1 = gsap.fromTo(
+        ".subHeader1",
+        { opacity: 0, y: -60 },
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: ".feature-page",
+            start: "top 80%",
+            end: "top 20%",
+            scrub: true,
+          },
+        }
+      );
 
-    // Sleek animation
-    const subHeaderLeftTween = gsap.fromTo(
-      ".subHeader2-left",
-      {
-        opacity: 0,
-        x: -150,
-        scale: 2,
-      },
-      {
-        opacity: 1,
-        x: 0,
-        scale: 1,
+      // Sleek animation
+      subHeaderLeftTween = gsap.fromTo(
+        ".subHeader2-left",
+        {
+          opacity: 0,
+          x: -150,
+          scale: 2,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          scale: 1,
+          scrollTrigger: {
+            trigger: "#page2",
+            start: "top 30%",
+            end: "top 10%",
+            scrub: true,
+          },
+        }
+      );
+      // Designs Animation
+      subHeaderRightTween = gsap.fromTo(
+        ".subHeader2-right",
+        {
+          opacity: 0,
+          x: 150,
+          scale: 2,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          scale: 1,
+          scrollTrigger: {
+            trigger: "#page2",
+            start: "top 30%",
+            end: "top 10%",
+          },
+        }
+      );
+      // Innovative materials Animation
+      tween3 = gsap.fromTo(
+        ".subHeader3",
+        { opacity: 0, x: 60 },
+        {
+          opacity: 1,
+          x: 0,
+          stagger: 0.2,
+          duration: 1,
+          scrollTrigger: {
+            trigger: ".feature-page",
+            start: "top 20%",
+            end: "top 5%",
+            scrub: true,
+          },
+        }
+      );
+      paragraphTween = gsap.fromTo(
+        ".paragraph1",
+        { opacity: 0, scale: 1.1 },
+        {
+          opacity: 1,
+          scale: 1,
+          scrollTrigger: {
+            trigger: ".feature-page",
+            start: "top 80%",
+            end: "top 40%",
+            scrub: true,
+          },
+        }
+      );
+      paragraph2Tween = gsap.fromTo(
+        ".paragraph2",
+        { opacity: 0, scale: 1.1 },
+        {
+          opacity: 1,
+          scale: 1,
+          scrollTrigger: {
+            trigger: "#page2",
+            start: "top 30%",
+            end: "top 10%",
+            scrub: true,
+          },
+        }
+      );
+      paragraph3Tween = gsap.fromTo(
+        ".paragraph3",
+        { opacity: 0, scale: 1.1, x: -30 },
+        {
+          opacity: 1,
+          scale: 1,
+          x: 0,
+          scrollTrigger: {
+            trigger: "#page2",
+            start: "top 30%",
+            end: "top 10%",
+            scrub: true,
+            onLeave: () => {},
+          },
+        }
+      );
+
+      p2ScrollUpTl = gsap.timeline({
         scrollTrigger: {
           trigger: "#page2",
-          start: "top 30%",
-          end: "top 10%",
-          scrub: true,
-        },
-      }
-    );
-    // Designs Animation
-    const subHeaderRightTween = gsap.fromTo(
-      ".subHeader2-right",
-      {
-        opacity: 0,
-        x: 150,
-        scale: 2,
-      },
-      {
-        opacity: 1,
-        x: 0,
-        scale: 1,
-        scrollTrigger: {
-          trigger: "#page2",
-          start: "top 30%",
-          end: "top 10%",
-        },
-      }
-    );
-    // Innovative materials Animation
-    const tween3 = gsap.fromTo(
-      ".subHeader3",
-      { opacity: 0, x: 60 },
-      {
-        opacity: 1,
-        x: 0,
-        stagger: 0.2,
-        duration: 1,
-        scrollTrigger: {
-          trigger: ".feature-page",
           start: "top 20%",
           end: "top 5%",
           scrub: true,
+          // markers: true,
         },
-      }
-    );
-    const paragraphTween = gsap.fromTo(
-      ".paragraph1",
-      { opacity: 0, scale: 1.1 },
-      {
-        opacity: 1,
-        scale: 1,
-        scrollTrigger: {
-          trigger: ".feature-page",
-          start: "top 80%",
-          end: "top 40%",
-          scrub: true,
-        },
-      }
-    );
-    const paragraph2Tween = gsap.fromTo(
-      ".paragraph2",
-      { opacity: 0, scale: 1.1 },
-      {
-        opacity: 1,
-        scale: 1,
-        scrollTrigger: {
-          trigger: "#page2",
-          start: "top 30%",
-          end: "top 10%",
-          scrub: true,
-        },
-      }
-    );
-    const paragraph3Tween = gsap.fromTo(
-      ".paragraph3",
-      { opacity: 0, scale: 1.1, x: -30 },
-      {
-        opacity: 1,
-        scale: 1,
-        x: 0,
-        scrollTrigger: {
-          trigger: "#page2",
-          start: "top 30%",
-          end: "top 10%",
-          scrub: true,
-          onLeave: () => {},
-        },
-      }
-    );
+      });
 
-    const p2ScrollUpTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#page2",
-        start: "top 20%",
-        end: "top 5%",
-        scrub: true,
-        // markers: true,
-      },
-    });
-
-    // p2ScrollUpTl.fromTo(
-    //   "subHeader1",
-    //   {
-    //     opacity: 1,
-    //   },
-    //   { opacity: 0, stagger: 0.3 }
-    // );
-
+      // p2ScrollUpTl.fromTo(
+      //   "subHeader1",
+      //   {
+      //     opacity: 1,
+      //   },
+      //   { opacity: 0, stagger: 0.3 }
+      // );
+    };
+    loadGSAP();
     return () => {
       tween1.scrollTrigger?.kill();
       subHeaderLeftTween.scrollTrigger?.kill();

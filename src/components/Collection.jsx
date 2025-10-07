@@ -14,7 +14,7 @@ const Collection = ({
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel commodi aperiam unde laborum minus, pariatur fuga ipsa quaerat incidunt dolores, facere veritatis rerum laboriosam tenetur autem corrupti, reiciendis consectetur repudiandae",
       price: 4999,
       image: "/chronograph_watch/chronograph_watch.JPG",
-      src: "/chronograph_watch/scene.gltf",
+      src: "/chronograph_watch/scene-draco.glb",
     },
     {
       id: 2,
@@ -23,7 +23,7 @@ const Collection = ({
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur nihil mollitia corporis, culpa aliquid totam incidunt dolorem architecto ipsum magnam facilis pariatur id dolores. Nisi perferendis sint cumque rem molestias",
       price: 6999,
       image: "/casio_watch/casio_watch.JPG",
-      src: "/casio_watch/scene.gltf",
+      src: "/casio_watch/scene-draco.glb",
     },
     {
       id: 3,
@@ -32,7 +32,7 @@ const Collection = ({
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur nihil mollitia corporis, culpa aliquid totam incidunt dolorem architecto ipsum magnam facilis pariatur id dolores. Nisi perferendis sint cumque rem molestias",
       price: 6999,
       image: "/seiko-watch-model/seiko_watch.JPG",
-      src: "/seiko-watch-model/scene.gltf",
+      src: "/seiko-watch-model/scene-draco.glb",
     },
     {
       id: 4,
@@ -41,7 +41,7 @@ const Collection = ({
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur nihil mollitia corporis, culpa aliquid totam incidunt dolorem architecto ipsum magnam facilis pariatur id dolores. Nisi perferendis sint cumque rem molestias",
       price: 1999,
       image: "/watch-model/samsung_watch.JPG",
-      src: "/watch-model/scene.gltf",
+      src: "/watch-model/scene-draco.glb",
     },
     {
       id: 5,
@@ -50,7 +50,7 @@ const Collection = ({
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur nihil mollitia corporis, culpa aliquid totam incidunt dolorem architecto ipsum magnam facilis pariatur id dolores. Nisi perferendis sint cumque rem molestias",
       price: 1999,
       image: "/watch-model/samsung_watch.JPG",
-      src: "/watch_atlantic/scene.gltf",
+      src: "/watch_atlantic/scene-draco.glb",
     },
   ];
 
