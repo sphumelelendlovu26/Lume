@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import WatchModel from "./components/watchModel";
+import WatchModel from "./components/WatchModel";
 import { OrbitControls } from "@react-three/drei";
 import AppleWatchModel from "./components/AppleWatchModel";
 import { AxesHelper } from "three";
