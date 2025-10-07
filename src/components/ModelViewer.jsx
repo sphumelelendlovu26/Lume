@@ -62,9 +62,9 @@ const ModelViewer = ({ src }) => {
       >
         <ambientLight intensity={5} />
         <directionalLight
-          intensity={5}
+          intensity={10}
           castShadow
-          position={[2, 7, 2]}
+          position={[1, 7, 1]}
           shadow-mapSize-width={2048}
           shadow-mapSize-height={2048}
         />
@@ -74,7 +74,7 @@ const ModelViewer = ({ src }) => {
           minPolarAngle={Math.PI / 2}
           maxPolarAngle={Math.PI / 2}
           autoRotateSpeed={1}
-          autoRotate
+          // autoRotate
         />
 
         <Suspense fallback={<Loader />}>

@@ -11,7 +11,7 @@ const Login = () => {
         { opacity: 1, y: 0 }
       );
     }
-  });
+  }, []);
 
   return (
     <div

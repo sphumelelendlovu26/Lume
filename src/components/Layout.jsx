@@ -6,7 +6,9 @@ const Layout = ({ children }) => {
   const containerHeight = isHome ? "h-[300vh]" : "h-auto overflow-hidden";
 
   return (
-    <div className={`${containerHeight} overflow-x-hidden`}>{children}</div>
+    <div className={`${containerHeight} overflow-x-hidden layout`}>
+      {children}
+    </div>
   );
 };
 

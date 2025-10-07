@@ -104,7 +104,7 @@ const App = () => {
             selectedModel={selectedModel}
           />
         )}
-        {navIsOpen && <MobileNav />}
+        {navIsOpen && <MobileNav setNavIsOpen={setNavIsOpen} />}
       </Layout>
     </BrowserRouter>
   );

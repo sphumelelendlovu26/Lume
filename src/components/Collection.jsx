@@ -25,6 +25,33 @@ const Collection = ({
       image: "/casio_watch/casio_watch.JPG",
       src: "/casio_watch/scene.gltf",
     },
+    {
+      id: 3,
+      title: "Seiko Watch",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur nihil mollitia corporis, culpa aliquid totam incidunt dolorem architecto ipsum magnam facilis pariatur id dolores. Nisi perferendis sint cumque rem molestias",
+      price: 6999,
+      image: "/seiko-watch-model/seiko_watch.JPG",
+      src: "/seiko-watch-model/scene.gltf",
+    },
+    {
+      id: 4,
+      title: "Samsung Watch",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur nihil mollitia corporis, culpa aliquid totam incidunt dolorem architecto ipsum magnam facilis pariatur id dolores. Nisi perferendis sint cumque rem molestias",
+      price: 1999,
+      image: "/watch-model/samsung_watch.JPG",
+      src: "/watch-model/scene.gltf",
+    },
+    {
+      id: 5,
+      title: "Atlantic Watch",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur nihil mollitia corporis, culpa aliquid totam incidunt dolorem architecto ipsum magnam facilis pariatur id dolores. Nisi perferendis sint cumque rem molestias",
+      price: 1999,
+      image: "/watch-model/samsung_watch.JPG",
+      src: "/watch_atlantic/scene.gltf",
+    },
   ];
 
   useEffect(() => {
@@ -36,7 +63,7 @@ const Collection = ({
 
   return (
     <main className="w-[95vw]  container  ">
-      <div className="flex gap-2 flex-wrap justify-center items-center  overflow-scroll">
+      <div className="flex gap-2 flex-wrap justify-center items-center collection  overflow-scroll">
         {watches.map((watch) => (
           <WatchCard
             key={watch.id}

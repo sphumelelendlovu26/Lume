@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
 const CraftedPage = () => {
   return (
@@ -15,12 +15,16 @@ const CraftedPage = () => {
         innovation — wherever life takes you.
       </p>
       <div className="mt-10 flex gap-5 sm:gap-10 absolute bottom-[30%]">
-        <button className=" rounded bg-gray-900  hover:border transition-all text-sm text-white sm:text-lg discoverBtn hover:bg-transparent hover:text-gray-900">
-          Explore Collections
-        </button>
-        <button className=" rounded border border-gray-900 text-black text-sm sm:text-lg discoverBtn hover:bg-gray-900 hover:text-gray-100 transition-all">
-          Book a Virtual Try-On
-        </button>
+        <Link to="/collection">
+          <button className=" rounded bg-gray-900  hover:border transition-all text-sm text-white sm:text-lg discoverBtn hover:bg-transparent hover:text-gray-900">
+            Explore Collections
+          </button>
+        </Link>
+        <Link>
+          <button className=" rounded border border-gray-900 text-black text-sm sm:text-lg discoverBtn hover:bg-gray-900 hover:text-gray-100 transition-all">
+            Book a Virtual Try-On
+          </button>
+        </Link>
       </div>
     </section>
   );

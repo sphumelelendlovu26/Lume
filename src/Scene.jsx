@@ -4,7 +4,8 @@ import { OrbitControls } from "@react-three/drei";
 import AppleWatchModel from "./components/AppleWatchModel";
 import { AxesHelper } from "three";
 import { useEffect, useRef, useState } from "react";
-import ChronographModel from "./components/chronographModel";
+
+import AtlanticModel from "./components/AtlanticModel";
 
 const Scene = ({ isMobile }) => {
   const axesRef = useRef();
@@ -24,16 +25,17 @@ const Scene = ({ isMobile }) => {
     <div className="fixed inset-0 flex items-center justify-center overflow-hidden -z-50">
       <Canvas camera={[0, 0, 6]} fov={30}>
         <directionalLight
-          intensity={20}
+          intensity={15}
           castShadow
           shadow-mapSize-width={1024}
           shadow-mapSize-height={1024}
+          position={[0, 1, 0.5]}
         />
-        {/* <primitive object={new AxesHelper(10)} ref={axesRef} /> */}
-        <ambientLight intensity={10} />
+        <primitive object={new AxesHelper(10)} ref={axesRef} />
+        <ambientLight intensity={14} />
         <WatchModel scalingFactor={scalingFactor} />
         <AppleWatchModel scalingFactor={scalingFactor} isMobile={isMobile} />
-        {/* <ChronographModel scalingFactor={scalingFactor} /> */}
+        <AtlanticModel scalingFactor={scalingFactor} isMobile={isMobile} />
         <OrbitControls
           enableZoom={false}
           // enablePan={false}
