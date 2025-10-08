@@ -14,7 +14,7 @@ const Collection = ({
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel commodi aperiam unde laborum minus, pariatur fuga ipsa quaerat incidunt dolores, facere veritatis rerum laboriosam tenetur autem corrupti, reiciendis consectetur repudiandae",
       price: 4999,
       image: "/chronograph_watch/chronograph_watch.webp",
-      src: "/chronograph_watch/scene-draco.glb",
+      src: "/chronograph_watch/scene-ktx2.glb",
     },
     {
       id: 2,
@@ -23,7 +23,7 @@ const Collection = ({
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur nihil mollitia corporis, culpa aliquid totam incidunt dolorem architecto ipsum magnam facilis pariatur id dolores. Nisi perferendis sint cumque rem molestias",
       price: 6999,
       image: "/casio_watch/casio_watch.webp",
-      src: "/casio_watch/scene-draco.glb",
+      src: "/casio_watch/scene-ktx2.glb",
     },
     {
       id: 3,
@@ -32,7 +32,7 @@ const Collection = ({
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur nihil mollitia corporis, culpa aliquid totam incidunt dolorem architecto ipsum magnam facilis pariatur id dolores. Nisi perferendis sint cumque rem molestias",
       price: 6999,
       image: "/seiko-watch-model/seiko_watch.webp",
-      src: "/seiko-watch-model/scene-draco.glb",
+      src: "/seiko-watch-model/scene-ktx2.glb",
     },
     {
       id: 4,
@@ -41,7 +41,7 @@ const Collection = ({
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur nihil mollitia corporis, culpa aliquid totam incidunt dolorem architecto ipsum magnam facilis pariatur id dolores. Nisi perferendis sint cumque rem molestias",
       price: 1999,
       image: "/watch-model/samsung_watch.webp",
-      src: "/watch-model/scene-draco.glb",
+      src: "/watch-model/scene-ktx2.glb",
     },
     {
       id: 5,

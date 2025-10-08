@@ -1,15 +1,30 @@
 import { useGLTF } from "@react-three/drei";
-import { useRef, useEffect, useMemo } from "react";
+import { useRef, useEffect, useMemo, useLayoutEffect } from "react";
+import "../setupKTX2Loader";
+import { KTX2Loader } from "three/examples/jsm/Addons.js";
+import { useThree } from "@react-three/fiber";
 
-useGLTF.preload("/watch_atlantic/scene-draco.glb");
-
+useGLTF.preload("/watch_atlantic/scene-ktx2.glb");
 const AtlanticModel = ({ scalingFactor, isMobile }) => {
-  const { scene } = useGLTF("/watch_atlantic/scene-draco.glb");
-  const memoizedScene = useMemo(() => scene.clone(), [scene]);
+  const gl = useThree((state) => state.gl);
+  const { scene } = useGLTF(
+    "/watch_atlantic/scene-draco.glb",
+    undefined,
+    undefined,
+    (loader) => {
+      const ktx2loader = new KTX2Loader();
+      ktx2loader.setTranscoderPath(
+        "https://cdn.jsdelivr.net/gh/pmndrs/drei-assets/basis/"
+      );
+      ktx2loader.detectSupport(gl);
+      loader.setKTX2Loader(ktx2loader);
+    }
+  );
+  const clonedScene = useMemo(() => scene.clone(), [scene]);
 
   const group = useRef();
   const watchScale = 0.5;
-  useEffect(() => {
+  useLayoutEffect(() => {
     let tl, scrollTl, p3ScrollTl, p3ScrollTl2;
 
     const loadGSAP = async () => {
@@ -103,7 +118,7 @@ const AtlanticModel = ({ scalingFactor, isMobile }) => {
 
   return (
     <group ref={group} scale={finalScale}>
-      <primitive object={memoizedScene}></primitive>
+      <primitive object={clonedScene}></primitive>
     </group>
   );
 };

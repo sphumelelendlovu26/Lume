@@ -92,6 +92,7 @@ fieldset {
 
 html::-webkit-scrollbar {
   width: 1vw;
+  max-width: 10px;
 }
 
 html::-webkit-scrollbar-track {

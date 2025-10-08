@@ -1,3 +1,4 @@
+import React from "react";
 const WatchCard = ({ watch, setModalIsOpen, setSelectedModelId }) => {
   return (
     <main
@@ -21,4 +22,4 @@ const WatchCard = ({ watch, setModalIsOpen, setSelectedModelId }) => {
   );
 };
 
-export default WatchCard;
+export default React.memo(WatchCard);

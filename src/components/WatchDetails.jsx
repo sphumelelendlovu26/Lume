@@ -5,8 +5,8 @@ import React from "react";
 const WatchDetails = ({ selectedModel }) => {
   const dispatch = useDispatch();
   return (
-    <div className="h-2/3  flex flex-col gap-1 sm:gap-5   items-center">
-      <h2 className="mask-b-from-55% font-semibold sm:text-xl tracking-widest">
+    <div className="h-1/2   flex flex-col gap-7 sm:gap-10   items-center">
+      <h2 className="mask-b-from-55% font-semibold sm:text-2xl tracking-widest">
         {selectedModel?.title}
       </h2>
       <p className="max-w-2xl text-sm sm:text-lg">
@@ -16,7 +16,7 @@ const WatchDetails = ({ selectedModel }) => {
         R {selectedModel?.price}.00
       </p>
       <button
-        className="border hover:cursor-pointer addTocartBtn hover:scale-105 bg-gray-900 text-white hover:bg-gray-100 hover:text-gray-900"
+        className="border hover:cursor-pointer w-1/2 addTocartBtn hover:scale-105 bg-gray-900 text-white hover:bg-gray-100 hover:text-gray-900"
         onClick={() => dispatch(addToCart(selectedModel))}
       >
         {" "}

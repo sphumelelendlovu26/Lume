@@ -1,17 +1,37 @@
 import { Canvas } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
-import { Suspense, useEffect, useRef, useMemo, lazy, useState } from "react";
+import React, {
+  Suspense,
+  useEffect,
+  useRef,
+  useMemo,
+  lazy,
+  useState,
+} from "react";
 import { Box3, Vector3, TextureLoader } from "three";
 import { AxesHelper } from "three";
 const Loader = lazy(() => import("./Loader"));
+import { KTX2Loader } from "three/examples/jsm/Addons.js";
+import { useThree } from "@react-three/fiber";
 
 const LazyOrbitControls = lazy(() =>
   import("@react-three/drei").then((mod) => ({ default: mod.OrbitControls }))
 );
 const Model = ({ src, desiredScale = 1 }) => {
   const [textureMap, setTextureMap] = useState(null);
-  useGLTF.preload(src.src);
+
+  const gl = useThree((state) => state.gl);
+  useGLTF.preload(src.src, undefined, undefined, (loader) => {
+    const ktx2loader = new KTX2Loader();
+    ktx2loader.setTranscoderPath(
+      "https://cdn.jsdelivr.net/gh/pmndrs/drei-assets/basis/"
+    );
+    ktx2loader.detectSupport(gl);
+    loader.setKTX2Loader(ktx2loader);
+  });
+
   const { scene } = useGLTF(src.src);
+
   const memoizedScene = useMemo(() => scene.clone(), [scene]);
   const ref = useRef();
   // useEffect for loading gsap
@@ -91,7 +111,7 @@ const Model = ({ src, desiredScale = 1 }) => {
 
 const ModelViewer = ({ src }) => {
   return (
-    <div className=" relative h-1/3 sm:h-1/2">
+    <div className=" relative h-1/2">
       <Canvas
         shadows
         camera={{
@@ -115,7 +135,7 @@ const ModelViewer = ({ src }) => {
             minPolarAngle={Math.PI / 2}
             maxPolarAngle={Math.PI / 2}
             autoRotateSpeed={1}
-            // autoRotate
+            autoRotate
           />
         </Suspense>
 
@@ -124,7 +144,7 @@ const ModelViewer = ({ src }) => {
         </Suspense>
         {/* <axesHelper args={[2]} /> */}
       </Canvas>
-      <div className=" font-extrabold w-full absolute top-1/2 z-50 flex justify-center gap-30  sm:gap-100">
+      <div className=" font-extrabold w-full absolute top-1/2 z-50 flex justify-center gap-50  sm:gap-120">
         <button aria-label="Toggle navigation" className="navigationBtn">
           {"<"}
         </button>{" "}
@@ -136,4 +156,4 @@ const ModelViewer = ({ src }) => {
   );
 };
 
-export default ModelViewer;
+export default React.memo(ModelViewer);
