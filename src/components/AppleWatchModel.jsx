@@ -7,7 +7,7 @@ import { useThree } from "@react-three/fiber";
 const AppleWatchModel = ({ scalingFactor, isMobile }) => {
   const gl = useThree((state) => state.gl);
   const { scene } = useGLTF(
-    "/seiko-watch-model/scene-ktx2.glb",
+    "/seiko-watch-model/scene-compressed.glb",
     undefined,
     undefined,
     (loader) => {

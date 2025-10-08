@@ -4,11 +4,11 @@ import "../setupKTX2Loader";
 import { KTX2Loader } from "three/examples/jsm/Addons.js";
 import { useThree } from "@react-three/fiber";
 
-useGLTF.preload("/watch-model/scene-draco.glb");
+useGLTF.preload("/watch-model/scene-compressed.glb");
 const WatchModel = ({ scalingFactor }) => {
   const gl = useThree((state) => state.gl);
   const { scene } = useGLTF(
-    "/watch-model/scene-ktx2.glb",
+    "/watch-model/scene-compressed.glb",
     undefined,
     undefined,
     (loader) => {

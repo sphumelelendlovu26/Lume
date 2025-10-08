@@ -5,7 +5,7 @@ import React from "react";
 const WatchDetails = ({ selectedModel }) => {
   const dispatch = useDispatch();
   return (
-    <div className="h-1/2   flex flex-col gap-7 sm:gap-10   items-center">
+    <div className="h-1/2   flex flex-col gap-4 sm:gap-10   items-center">
       <h2 className="mask-b-from-55% font-semibold sm:text-2xl tracking-widest">
         {selectedModel?.title}
       </h2>

@@ -4,11 +4,11 @@ import "../setupKTX2Loader";
 import { KTX2Loader } from "three/examples/jsm/Addons.js";
 import { useThree } from "@react-three/fiber";
 
-useGLTF.preload("/watch_atlantic/scene-ktx2.glb");
+useGLTF.preload("/watch_atlantic/scene-compressed.glb");
 const AtlanticModel = ({ scalingFactor, isMobile }) => {
   const gl = useThree((state) => state.gl);
   const { scene } = useGLTF(
-    "/watch_atlantic/scene-draco.glb",
+    "/watch_atlantic/scene-compressed.glb",
     undefined,
     undefined,
     (loader) => {
@@ -34,13 +34,13 @@ const AtlanticModel = ({ scalingFactor, isMobile }) => {
 
       if (group.current) {
         gsap.fromTo(group.current.rotation, { x: 1.5 }, { x: 1.5 });
-        gsap.fromTo(group.current.position, { y: 1 }, { y: 1 });
+        gsap.fromTo(group.current.position, { y: 0.8 }, { y: 0.8 });
         tl = gsap.timeline();
 
         tl.fromTo(
           group.current.position,
-          { x: -30 },
-          { x: isMobile ? -1.5 : -2, duration: 1.5 },
+          { x: -30, y: 0.8 },
+          { x: isMobile ? -1.5 : -2, duration: 1.5, y: 0.8 },
           0
         );
 
@@ -55,8 +55,8 @@ const AtlanticModel = ({ scalingFactor, isMobile }) => {
         //moves left watch  on scroll in the landing page
         scrollTl.fromTo(
           group.current.position,
-          { x: isMobile ? -1.5 : -2, y: 0.5 },
-          { x: -10, y: 0.5 }
+          { x: isMobile ? -1.5 : -2, y: 0.8 },
+          { x: -10, y: 0.8 }
         );
 
         p3ScrollTl = gsap.timeline({
@@ -71,7 +71,7 @@ const AtlanticModel = ({ scalingFactor, isMobile }) => {
           group.current.position,
           {
             x: -10,
-            y: 0.5,
+            y: 0.8,
           },
           { x: 0, y: -10 }
         );
@@ -91,7 +91,11 @@ const AtlanticModel = ({ scalingFactor, isMobile }) => {
           },
         });
 
-        p3ScrollTl2.fromTo(group.current.rotation, { x: 1.5 }, { x: 0.5 });
+        p3ScrollTl2.fromTo(
+          group.current.rotation,
+          { x: 1.5 },
+          { x: 0.5, y: Math.PI / 2 }
+        );
       }
     };
     const idleCallbackId = requestIdleCallback(() => {
