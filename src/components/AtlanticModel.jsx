@@ -78,7 +78,7 @@ const AtlanticModel = ({ scalingFactor, isMobile }) => {
         p3ScrollTl.fromTo(
           group.current.position,
           { x: 0, y: -10, z: 0 },
-          { x: 0, y: 0, z: 4 }
+          { x: 0, y: 0, z: 3 }
         );
 
         p3ScrollTl2 = gsap.timeline({

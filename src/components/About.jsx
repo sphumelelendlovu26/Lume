@@ -1,84 +1,67 @@
+import { lazy } from "react";
+import { useLayoutEffect } from "react";
+
 const About = () => {
+  useLayoutEffect(() => {
+    let tl;
+    const loadGSAP = async () => {
+      const gsap = (await import("gsap")).default;
+    };
+  });
+
   return (
-    <main className="container">
-      <section>
-        <header>
-          <h1>About Us</h1>
-          <p>
-            At the intersection of timeless design and cutting-edge engineering,
-            we craft watches that do more than tell time — they tell your story.
-          </p>
-        </header>
+    <div className="container">
+      <h1 className="text-center text-2xl font-bold about-headers">About Us</h1>
+      <p>
+        We craft watches that blend timeless design with modern engineering —
+        each piece tells your story.
+      </p>
 
-        <article>
-          <h2> Our Philosophy</h2>
-          <p>
-            We believe elegance lies in simplicity. Every curve, every tick,
-            every material is chosen with intention — blending Swiss-inspired
-            precision with minimalist aesthetics that elevate your everyday.
-          </p>
-        </article>
+      <h2 className="text-center text-xl about-headers">Our Philosophy</h2>
+      <p>
+        Elegance lives in simplicity. We fuse Swiss-inspired precision with
+        minimalist aesthetics to elevate everyday moments.
+      </p>
 
-        <article>
-          <h2> What Sets Us Apart</h2>
-          <ul>
-            <li>
-              <strong>Precision Engineering:</strong> Built with meticulous
-              attention to detail, our timepieces offer unmatched accuracy and
-              durability.
-            </li>
-            <li>
-              <strong>Sleek Designs:</strong> Clean lines, modern silhouettes,
-              and versatile styles that complement any look.
-            </li>
-            <li>
-              <strong>Innovative Materials:</strong> From sapphire crystal glass
-              to brushed stainless steel, we use only premium components that
-              stand the test of time.
-            </li>
-          </ul>
-        </article>
+      <h2 className="text-center text-xl about-headers">What Sets Us Apart</h2>
+      <ul>
+        <li>
+          <strong>Precision:</strong> Engineered for accuracy and durability.
+        </li>
+        <li>
+          <strong>Design:</strong> Clean, modern, and versatile silhouettes.
+        </li>
+        <li>
+          <strong>Materials:</strong> Premium components built to last.
+        </li>
+      </ul>
 
-        <article>
-          <h2> Designed for the Modern Explorer</h2>
-          <p>
-            Whether you're navigating city streets or chasing horizons, our
-            watches are built to move with you — stylish, reliable, and
-            unapologetically bold.
-          </p>
-        </article>
+      <h2>For the Modern Explorer</h2>
+      <p>
+        Whether navigating cities or chasing horizons, our watches move with you
+        — bold, stylish, and reliable.
+      </p>
 
-        <article>
-          <h2> Craftsmanship Meets Character</h2>
-          <p>
-            Each piece is a fusion of artistry and engineering. Inspired by
-            Mediterranean textures, architectural symmetry, and the quiet luxury
-            of natural materials, our designs reflect a lifestyle of intention
-            and refinement.
-          </p>
-        </article>
+      <h2 className="text-center text-xl about-headers">
+        Craftsmanship & Character
+      </h2>
+      <p>
+        Inspired by Mediterranean textures and architectural symmetry, our
+        designs reflect intentional living and quiet luxury.
+      </p>
 
-        <article>
-          <h2>Our Story</h2>
-          <p>
-            Born from a passion for detail and a love of timeless form, our
-            brand began as a sketch — a single idea to reimagine what a watch
-            could be. Today, that idea lives on every wrist we touch. We’re not
-            just building watches. We’re building legacy.
-          </p>
-        </article>
+      <h2 className="text-center text-xl about-headers">Our Story</h2>
+      <p>
+        From a single sketch to a legacy on every wrist — we reimagined what a
+        watch could be.
+      </p>
 
-        <article>
-          <h2> Looking Ahead</h2>
-          <p>
-            We’re constantly exploring new materials, sustainable practices, and
-            digital integrations to keep our designs future-forward. From
-            limited drops to collaborative collections, we’re shaping the next
-            chapter of wearable design.
-          </p>
-        </article>
-      </section>
-    </main>
+      <h2 className="text-center text-xl about-headers">Looking Ahead</h2>
+      <p>
+        We’re exploring sustainable materials and digital innovation to shape
+        the future of wearable design.
+      </p>
+    </div>
   );
 };
 

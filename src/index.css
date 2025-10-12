@@ -6,7 +6,7 @@
 }
 
 body {
-  @apply text-gray-900 tracking-wide p-1;
+  @apply text-gray-900 tracking-wide p-1 bg-gray-100;
 }
 
 h2 span {
@@ -34,7 +34,7 @@ nav {
 }
 
 .watchCard {
-  @apply p-5 w-full sm:w-auto;
+  @apply p-5;
 }
 
 li {
@@ -112,4 +112,17 @@ html::-webkit-scrollbar-thumb:hover {
 }
 .collection::-webkit-scrollbar-track {
   background-color: transparent;
+}
+
+.about-headers {
+  @apply text-gray-900 m-2 mask-b-from-55%;
+}
+.cartItem {
+  @apply pr-1 sm:my-3 mx-1 relative;
+}
+#cartHeader {
+  @apply sm:m-4;
+}
+.deleteBtn {
+  @apply px-2 py-1;
 }

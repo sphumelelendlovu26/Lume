@@ -7,7 +7,7 @@ import Layout from "./components/Layout";
 
 //lazy-loaded components
 const About = lazy(() => import("./components/About"));
-const Collection = lazy(() => import("./components/Collection"));
+const Collections = lazy(() => import("./components/Collections"));
 const Login = lazy(() => import("./components/Login"));
 const Cart = lazy(() => import("./components/Cart"));
 const Modal = lazy(() => import("./components/Modal"));
@@ -64,7 +64,7 @@ const App = () => {
             path="/collection"
             element={
               <Suspense fallback={<div className="loader">Loading...</div>}>
-                <Collection
+                <Collections
                   setModalIsOpen={setModalIsOpen}
                   setSelectedModelId={setSelectedModelId}
                   setSelectedModel={setSelectedModel}

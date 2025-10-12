@@ -6,7 +6,7 @@ const FeaturePage = lazy(() => import("./FeaturePage"));
 
 const Home = ({ isMobile }) => {
   return (
-    <main className="">
+    <main className="container  -z-10">
       <Scene isMobile={isMobile} />
       <LandingPage />
       <Suspense fallback="loading">

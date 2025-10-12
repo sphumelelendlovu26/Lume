@@ -1,16 +1,21 @@
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
+import { useLayoutEffect, useRef } from "react";
+
 const Login = () => {
   const formRef = useRef(0);
 
-  useEffect(() => {
-    if (formRef.current) {
-      gsap.fromTo(
-        formRef.current,
-        { opacity: 0, y: -20 },
-        { opacity: 1, y: 0 }
-      );
-    }
+  useLayoutEffect(() => {
+    const loadGSAP = async () => {
+      const gsap = await import("gsap");
+
+      if (formRef.current) {
+        gsap.fromTo(
+          formRef.current,
+          { opacity: 0, y: -20 },
+          { opacity: 1, y: 0 }
+        );
+      }
+    };
+    loadGSAP();
   }, []);
 
   return (

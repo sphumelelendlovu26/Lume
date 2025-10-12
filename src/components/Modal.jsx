@@ -21,7 +21,7 @@ const Modal = ({ setModalIsOpen, selectedModel }) => {
     >
       <div className="relative w-[85vw] h-[85vh] max-w-3xl bg-white rounded shadow-lg">
         <button
-          className="absolute top-3 right-3 z-50 text-2xl font-bold hover:cursor-pointer"
+          className="absolute top-3 right-3 z-50 text-2xl font-bold  hover:text-red-500 hover:cursor-pointer flex items-center justify-center"
           onClick={() => setModalIsOpen(false)}
         >
           ×

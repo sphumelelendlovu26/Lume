@@ -119,9 +119,9 @@ const ModelViewer = ({ src }) => {
           fov: 30,
         }}
       >
-        <ambientLight intensity={5} />
+        <ambientLight intensity={3} />
         <directionalLight
-          intensity={10}
+          intensity={5}
           castShadow
           position={[1, 7, 1]}
           shadow-mapSize-width={2048}
@@ -144,14 +144,7 @@ const ModelViewer = ({ src }) => {
         </Suspense>
         {/* <axesHelper args={[2]} /> */}
       </Canvas>
-      <div className=" font-extrabold w-full absolute top-1/2 z-50 flex justify-center gap-50  sm:gap-120">
-        <button aria-label="Toggle navigation" className="navigationBtn">
-          {"<"}
-        </button>{" "}
-        <button aria-label="Toggle navigation" className="navigationBtn">
-          {">"}
-        </button>
-      </div>
+      
     </div>
   );
 };
