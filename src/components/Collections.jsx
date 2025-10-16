@@ -63,7 +63,7 @@ const Collection = ({
 
   return (
     <main className="w-[95vw]  container  ">
-      <div className="flex gap-2 flex-wrap justify-center items-center collection  overflow-scroll">
+      <div className="flex gap-2 flex-wrap justify-center items-center collection  ">
         {watches.map((watch) => (
           <WatchCard
             key={watch.id}
