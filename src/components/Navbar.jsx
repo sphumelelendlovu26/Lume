@@ -61,7 +61,10 @@ const Navbar = ({ isMobile, setNavIsOpen, navIsOpen }) => {
         </div>
       ) : (
         <div className="flex items-center justify-between p-5">
-          <div className="border h-[2rem] w-[2rem] "></div>
+          <div className="border flex justify-center h-[2rem] w-[2rem] rounded-full border-gray-500 bg-gray-500 ">
+            {" "}
+            <span className="border h-1/2 ticker"></span>{" "}
+          </div>
           <ul className="flex gap-3 sm:gap-12 items-center  px-4">
             <li className="link">
               <Link to="/">Home</Link>

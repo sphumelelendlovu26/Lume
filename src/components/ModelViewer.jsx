@@ -132,8 +132,8 @@ const ModelViewer = ({ src }) => {
           <LazyOrbitControls
             enablePan={false}
             enableZoom={false}
-            minPolarAngle={Math.PI / 2}
-            maxPolarAngle={Math.PI / 2}
+            // minPolarAngle={Math.PI / 2}
+            // maxPolarAngle={Math.PI / 2}
             autoRotateSpeed={1}
             autoRotate
           />
@@ -144,7 +144,6 @@ const ModelViewer = ({ src }) => {
         </Suspense>
         {/* <axesHelper args={[2]} /> */}
       </Canvas>
-      
     </div>
   );
 };

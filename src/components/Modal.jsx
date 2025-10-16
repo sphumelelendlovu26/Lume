@@ -1,18 +1,23 @@
-import ModelViewer from "./ModelViewer";
-import WatchDetails from "./WatchDetails";
-import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
+const ModelViewer = lazy(() => import("./ModelViewer"));
+const WatchDetails = lazy(() => import("./WatchDetails"));
+import React, { lazy, useEffect, useRef } from "react";
 const Modal = ({ setModalIsOpen, selectedModel }) => {
   const modalRef = useRef();
 
   useEffect(() => {
-    if (modalRef.current) {
-      gsap.fromTo(
-        modalRef.current,
-        { opacity: 0, y: -20 },
-        { opacity: 1, y: 0, duration: 1 }
-      );
-    }
+    const loadGSAP = async () => {
+      if (modalRef.current) {
+        const gsap = (await import("gsap")).default;
+
+        gsap.fromTo(
+          modalRef.current,
+          { opacity: 0, y: -20 },
+          { opacity: 1, y: 0, duration: 1 }
+        );
+      }
+    };
+
+    loadGSAP();
   }, []);
   return (
     <main
